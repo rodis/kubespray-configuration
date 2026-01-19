@@ -68,21 +68,21 @@ local_volume_provisioner_enabled: false
 gateway_api_enabled: false
 
 # Nginx ingress controller deployment
-ingress_nginx_enabled: true
-ingress_nginx_host_network: true
+ingress_nginx_enabled: false
+# ingress_nginx_host_network: false
 # ingress_nginx_service_type: LoadBalancer
 # ingress_nginx_service_annotations:
 #   example.io/loadbalancerIPs: 1.2.3.4
 # ingress_nginx_service_nodeport_http: 30080
 # ingress_nginx_service_nodeport_https: 30081
 ingress_publish_status_address: ""
-ingress_nginx_nodeselector:
-  node-role.kubernetes.io/control-plane: ""
-ingress_nginx_tolerations:
-  - key: "node-role.kubernetes.io/control-plane"
-    operator: "Equal"
-    value: ""
-    effect: "NoSchedule"
+# ingress_nginx_nodeselector:
+#   node-role.kubernetes.io/control-plane: ""
+# ingress_nginx_tolerations:
+#   - key: "node-role.kubernetes.io/control-plane"
+#     operator: "Equal"
+#     value: ""
+#     effect: "NoSchedule"
 # ingress_nginx_namespace: "ingress-nginx"
 # ingress_nginx_insecure_port: 80
 # ingress_nginx_secure_port: 443
