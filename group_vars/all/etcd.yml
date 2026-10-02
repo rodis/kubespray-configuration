@@ -14,3 +14,11 @@ etcd_data_dir: /var/lib/etcd
 ## Settings for etcd deployment type
 # Set this to docker if you are using container_manager: docker
 etcd_deployment_type: host
+
+## Raft election timeout, raised from kubespray's 5000 ms (2026-10-02). With etcd's data on its own
+## volume (infra-automation terraform/kubernetes/etcd.tf) the longest stall measured in 47 hours was
+## 6.9s; at 5s a leader stalled that long would be voted out by followers that were never actually
+## without one. 15s is about twice the worst seen. It does nothing to a single-member cluster, which
+## never holds an election, so it is safe for production's one member and needed once it has three.
+## Heartbeat stays at the default 250 ms.
+etcd_election_timeout: "15000"
